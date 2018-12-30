@@ -21,7 +21,8 @@ import javax.sql.DataSource;
  * @author Irwan Cigist <cigist.developer@gmail.com>
  */
 public class BukuDao {
-    public void save(Buku buku) throws SQLException {  
+
+    public void save(Buku buku) throws SQLException {
         DatabaseConnection db = new DatabaseConnection();
         DataSource dataSource = db.getDataSource();
         try (Connection connection = dataSource.getConnection()) {
@@ -32,7 +33,7 @@ public class BukuDao {
                 statement.setInt(2, buku.getTahunTerbit());
                 statement.setString(3, buku.getPengarang());
                 statement.setInt(4, buku.getJumlahBuku());
-                
+
                 statement.executeUpdate();
                 statement.close();
                 connection.close();
@@ -49,22 +50,24 @@ public class BukuDao {
 
     ;
      public void delete(Integer idBuku) throws SQLException {
-         DatabaseConnection db = new DatabaseConnection();
-         DataSource dataSource = db.getDataSource(); 
-         Connection connection = dataSource.getConnection();
-         String SQL = "DELETE FROM perpus.buku\n"
+        DatabaseConnection db = new DatabaseConnection();
+        DataSource dataSource = db.getDataSource();
+        Connection connection = dataSource.getConnection();
+        String SQL = "DELETE FROM perpus.buku\n"
                 + " WHERE id=?;";
-         try (PreparedStatement statement = connection.prepareCall(SQL)) {
-                statement.setInt(1,idBuku);
-                statement.executeUpdate();
-                statement.close();
-                connection.close();
-            }
-    };
-     public List<Buku> findAll() throws SQLException{
-         List<Buku> listBuku = new ArrayList<>();
-         DatabaseConnection db = new DatabaseConnection();
-         DataSource dataSource = db.getDataSource(); 
+        try (PreparedStatement statement = connection.prepareCall(SQL)) {
+            statement.setInt(1, idBuku);
+            statement.executeUpdate();
+            statement.close();
+            connection.close();
+        }
+    }
+
+    ;
+     public List<Buku> findAll() throws SQLException {
+        List<Buku> listBuku = new ArrayList<>();
+        DatabaseConnection db = new DatabaseConnection();
+        DataSource dataSource = db.getDataSource();
         try (Connection connection = dataSource.getConnection()) {
             String SQL = "SELECT id, judul_buku, tahub_terbit, pengarang, jumlah_buku\n"
                     + "  FROM perpus.buku;";
@@ -77,17 +80,36 @@ public class BukuDao {
                 buku.setTahunTerbit(resultSet.getInt(3));
                 buku.setPengarang(resultSet.getString(4));
                 buku.setJumlahBuku(resultSet.getInt(5));
-                
+
                 listBuku.add(buku);
             }
-            
+
             resultSet.close();
             statement.close();
         }
-         return listBuku;
+        return listBuku;
     }
 
-    public Buku findById(Integer idBuku) {
-        return null;
+    public Buku findById(Integer idBuku) throws SQLException {
+        DatabaseConnection db = new DatabaseConnection();
+        DataSource dataSource = db.getDataSource();
+        try (Connection connection = dataSource.getConnection()) {
+            String SQL = "SELECT id, judul_buku, tahub_terbit, pengarang, jumlah_buku\n"
+                    + "  FROM perpus.buku WHERE id=?";
+            Buku buku;
+            try (PreparedStatement statement = connection.prepareCall(SQL)) {
+                statement.setInt(1, idBuku);
+                ResultSet resultSet = statement.executeQuery();
+                buku = new Buku();
+                if (resultSet.next()) {
+                    buku.setId(resultSet.getInt(1));
+                    buku.setJudulBuku(resultSet.getString(2));
+                    buku.setTahunTerbit(resultSet.getInt(3));
+                    buku.setPengarang(resultSet.getString(4));
+                    buku.setJumlahBuku(resultSet.getInt(5));
+                }
+            }
+            return buku;
+        }
     }
 }

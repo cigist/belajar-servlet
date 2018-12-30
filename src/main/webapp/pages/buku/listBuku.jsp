@@ -30,7 +30,7 @@
                     <td>${item.pengarang}</td>
                     <td>${item.jumlahBuku}</td>
                     <td style="width:160px;">
-                        <a class="btn btn-flat" href="${pageContext.servletContext.contextPath}/buku/edit?idBuku=${item.id}">EDIT</a>
+                        <a class="btn btn-flat" href="${pageContext.servletContext.contextPath}/buku/update?idBuku=${item.id}">EDIT</a>
                         <a class="btn btn-flat" href="${pageContext.servletContext.contextPath}/buku/delete?idBuku=${item.id}">DELETE</a>
                     </td>
                 </tr>
