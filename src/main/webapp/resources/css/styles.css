@@ -1,0 +1,87 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 11, 2018, 6:09:51 PM
+    Author     : Irwan Cigist <cigist.developer@gmail.com>
+*/
+
+/*Alfa UI Button*/
+/*Button default*/
+.al-btn-default{
+    background-color: #fff;
+    color: grey;
+    margin: 2px;
+    padding: 5px 10px 5px 10px;
+    font-family: sans-serif;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #f1f1f1;
+}
+.al-btn-default:hover{
+    background-color: #f1f1f1;
+    color: grey;
+    margin: 2px;
+    padding: 5px 10px 5px 10px;
+    font-family: sans-serif;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #f1f1f1;
+}
+/*Button success*/
+.al-btn-success{
+    background-color: #009933;
+    color: #fff;
+    margin: 2px;
+    padding: 5px 10px 5px 10px;
+    font-family: sans-serif;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #f1f1f1;
+}
+.al-btn-success:hover{
+    background-color:  #33cc00;
+    color: #fff;
+    margin: 2px;
+    padding: 5px 10px 5px 10px;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+/*button property*/
+.btn-block{
+    width: 100%;
+    margin: 2px;
+}
+.btn-rounded{
+    border-radius: 360px;
+}
+.btn-flat{
+    border-radius: 0px;
+}
+
+/*Alfa UI Input*/
+.al-form-control{
+    background-color: #fff;
+    margin: 2px;
+    padding: 5px 10px 5px 10px;
+    font-family: sans-serif;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #999999;
+}
+.al-form-control:hover{
+    background-color: #f1f1f1;
+    margin: 2px;
+    padding: 5px 10px 5px 10px;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+.input-rounded{
+    border-radius: 360px;
+}
+.input-flat{
+    border-radius: 0px;
+}
