@@ -36,5 +36,23 @@ public class EditBukuCtrl extends HttpServlet{
             Logger.getLogger(EditBukuCtrl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            Buku buku = new Buku();
+            buku.setId(Integer.valueOf(req.getParameter("kodeBuku")));
+            buku.setJudulBuku(req.getParameter("judulBuku"));
+            buku.setTahunTerbit(Integer.valueOf(req.getParameter("tahunTerbit")));
+            buku.setPengarang(req.getParameter("pengarang"));
+            buku.setJumlahBuku(Integer.valueOf(req.getParameter("jumlahBuku")));
+            BukuDao bukuDao;
+            bukuDao = new BukuDao();
+            bukuDao.update(buku);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(BukuAddCtrl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        resp.sendRedirect(req.getServletContext().getContextPath() +"/buku");
+    }
     
 }

@@ -41,11 +41,25 @@ public class BukuDao {
         }
     }
 
-    public void update() {
+    public void update(Buku buku) throws SQLException { 
+        DatabaseConnection db = new DatabaseConnection();
+        DataSource dataSource = db.getDataSource();
+        try (Connection connection = dataSource.getConnection()) {
+             String SQL = "UPDATE perpus.buku\n"
+                + "   SET judul_buku=?, tahub_terbit=?, pengarang=?, jumlah_buku=?\n"
+                + " WHERE id=?";
+            try (PreparedStatement statement = connection.prepareCall(SQL)) {
+                statement.setString(1, buku.getJudulBuku());
+                statement.setInt(2, buku.getTahunTerbit());
+                statement.setString(3, buku.getPengarang());
+                statement.setInt(4, buku.getJumlahBuku());
+                statement.setInt(5,buku.getId());
 
-        String SQL = "UPDATE perpus.buku\n"
-                + "   SET id=?, judul_buku=?, tahub_terbit=?, pengarang=?, jumlah_buku=?\n"
-                + " WHERE <condition>;";
+                statement.executeUpdate();
+                statement.close();
+                connection.close();
+            }
+        }
     }
 
     ;
@@ -70,7 +84,7 @@ public class BukuDao {
         DataSource dataSource = db.getDataSource();
         try (Connection connection = dataSource.getConnection()) {
             String SQL = "SELECT id, judul_buku, tahub_terbit, pengarang, jumlah_buku\n"
-                    + "  FROM perpus.buku;";
+                    + "  FROM perpus.buku ORDER BY id asc";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL);
             while (resultSet.next()) {

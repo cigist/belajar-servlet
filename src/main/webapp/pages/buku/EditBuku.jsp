@@ -12,6 +12,12 @@
         <h1>EDIT BOOKS</h1>
         <form class="form-horizontal" action="${pageContext.servletContext.contextPath}/buku/update" method="post">
             <div class="form-group">
+                <label for="kodeBuku" class="control-label col-sm-2">Kode Buku :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="kodeBuku" id="kodeBuku" value="${buku.id}"  readonly/>
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="judulBuku" class="control-label col-sm-2">Judul Buku :</label>
                 <div class="col-sm-10">
                     <input class="form-control" type="text" name="judulBuku" id="judulBuku" value="${buku.judulBuku
@@ -21,19 +27,19 @@
             <div class="form-group">
                 <label for="tahunTerbit" class="control-label col-sm-2">Tahun Terbit :</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="number" name="tahunTerbit" id="tahunTerbit" />
+                    <input class="form-control" type="number" name="tahunTerbit" id="tahunTerbit" value="${buku.tahunTerbit}"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="pengarang" class="control-label col-sm-2">Pengarang :</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="text" name="pengarang" id="pengarang" />
+                    <input class="form-control" type="text" name="pengarang" id="pengarang" value="${buku.pengarang}" />
                 </div>
             </div>
             <div class="form-group">
                 <label for="jumlahBuku" class="control-label col-sm-2">Jumlah Buku :</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="number" name="jumlahBuku" id="jumlahBuku" />
+                    <input class="form-control" type="number" name="jumlahBuku" id="jumlahBuku" value="${buku.jumlahBuku}" readonly/>
                 </div>
             </div>
             <div class="form-group">
