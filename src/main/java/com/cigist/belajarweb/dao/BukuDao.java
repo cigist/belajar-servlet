@@ -60,9 +60,7 @@ public class BukuDao {
                 connection.close();
             }
         }
-    }
-
-    ;
+    };
      public void delete(Integer idBuku) throws SQLException {
         DatabaseConnection db = new DatabaseConnection();
         DataSource dataSource = db.getDataSource();
@@ -98,8 +96,9 @@ public class BukuDao {
                 listBuku.add(buku);
             }
 
-            resultSet.close();
-            statement.close();
+           resultSet.close();
+           statement.close(); 
+                connection.close();
         }
         return listBuku;
     }
@@ -122,6 +121,9 @@ public class BukuDao {
                     buku.setPengarang(resultSet.getString(4));
                     buku.setJumlahBuku(resultSet.getInt(5));
                 }
+                resultSet.close();
+                statement.close(); 
+                connection.close();
             }
             return buku;
         }

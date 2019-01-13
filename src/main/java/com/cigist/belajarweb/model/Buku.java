@@ -5,7 +5,9 @@
  */
 package com.cigist.belajarweb.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -13,7 +15,15 @@ import lombok.Data;
  */
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Buku {
+
+    public Buku(int id,String judulBuku) {
+        this.id = id;
+        this.judulBuku = judulBuku;
+    }
+    
     private Integer id;
     private String judulBuku;
     private Integer tahunTerbit;

@@ -30,6 +30,7 @@ public class EditBukuCtrl extends HttpServlet{
             Integer idBuku = Integer.valueOf(req.getParameter("idBuku"));
             Buku dataBuku = new BukuDao().findById(idBuku);
             
+           System.out.println("DATA BUKU = "+dataBuku);
            req.setAttribute("buku", dataBuku);
            req.getRequestDispatcher("/pages/buku/EditBuku.jsp").forward(req, resp);
         } catch (SQLException ex) {

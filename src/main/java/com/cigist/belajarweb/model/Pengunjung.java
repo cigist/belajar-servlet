@@ -5,7 +5,9 @@
  */
 package com.cigist.belajarweb.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -13,7 +15,15 @@ import lombok.Data;
  */
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Pengunjung {
+
+    public Pengunjung(String nama, String alamat) {
+        this.nama = nama;
+        this.alamat = alamat;
+    }
+    
     private Integer id;
     private String nama,alamat;
 }

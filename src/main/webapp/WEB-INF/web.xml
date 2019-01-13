@@ -16,7 +16,7 @@
         <listener-class>com.cigist.belajarweb.listener.ListenerApp</listener-class>
     </listener>-->
     <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
+        <welcome-file>pages/dashboard.jsp</welcome-file>
     </welcome-file-list>
     <error-page>
         <error-code>404</error-code>

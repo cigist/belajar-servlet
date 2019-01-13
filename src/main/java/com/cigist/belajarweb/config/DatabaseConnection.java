@@ -13,9 +13,9 @@ import org.apache.commons.dbcp2.BasicDataSource;
  * @author Irwan Cigist <cigist.developer@gmail.com>
  */
 public class DatabaseConnection {
-    private final static String URL="jdbc:postgresql://localhost:5432/training";
-    private final static String USERNAME="training";
-    private final static String PASSWORD="training";
+    private final static String URL="jdbc:mysql://localhost:3306/perpus";
+    private final static String USERNAME="root";
+    private final static String PASSWORD="root123!";
     
     public DataSource getDataSource(){
         BasicDataSource bs = new BasicDataSource();
